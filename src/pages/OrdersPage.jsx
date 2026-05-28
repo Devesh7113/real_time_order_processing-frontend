@@ -5,7 +5,7 @@ import { getErrorMessage, isNetworkOrUnreachableError } from '../api/errorMessag
 import ServerUnavailableNotice from '../components/ServerUnavailableNotice'
 import { ORDERS_POLL_INTERVAL_MS } from '../constants/polling'
 import { canCustomerEditOrder } from '../utils/orderEditability'
-import { formatDateTimeIN, formatRupees } from '../utils/localeFormat'
+import { formatDateTimeIN, formatRupees, sortOrdersByCreatedAtDesc } from '../utils/localeFormat'
 
 function IconEye({ className }) {
   return (
@@ -73,7 +73,7 @@ export default function OrdersPage() {
     }
     try {
       const data = await fetchOrders()
-      setOrders(Array.isArray(data) ? data : [])
+      setOrders(sortOrdersByCreatedAtDesc(Array.isArray(data) ? data : []))
       setLastSyncedAt(new Date())
     } catch (e) {
       if (!silent) {
@@ -173,7 +173,7 @@ export default function OrdersPage() {
           <table className="min-w-full text-left text-sm">
             <thead className="border-b border-slate-200 bg-slate-50 text-xs font-semibold uppercase text-slate-600">
               <tr>
-                <th className="px-4 py-3">ID</th>
+                <th className="px-4 py-3">#</th>
                 <th className="px-4 py-3">Total</th>
                 <th className="px-4 py-3">Order status</th>
                 <th className="px-4 py-3">Payment</th>
@@ -182,9 +182,9 @@ export default function OrdersPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {orders.map((order) => (
+              {orders.map((order, index) => (
                 <tr key={order.id} className="hover:bg-slate-50/80">
-                  <td className="px-4 py-3 font-mono text-slate-800">{order.id}</td>
+                  <td className="px-4 py-3 tabular-nums text-slate-800">{index + 1}</td>
                   <td className="px-4 py-3 text-slate-800">{formatRupees(order.totalAmount)}</td>
                   <td className="px-4 py-3 text-slate-700">{order.orderStatus}</td>
                   <td className="px-4 py-3 text-slate-700">{order.paymentStatus}</td>
