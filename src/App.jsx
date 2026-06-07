@@ -13,6 +13,7 @@ import AdminProductsPage from './pages/AdminProductsPage'
 import AdminUsersPage from './pages/AdminUsersPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import HelpdeskChatPage from './pages/HelpdeskChatPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
@@ -68,6 +69,14 @@ export default function App() {
                 element={
                   <ProtectedRoute>
                     <OrdersPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="support"
+                element={
+                  <ProtectedRoute>
+                    <HelpdeskChatPage />
                   </ProtectedRoute>
                 }
               />

@@ -82,6 +82,9 @@ export default function Layout() {
                 <NavLink to="/orders" className={navClass}>
                   Orders
                 </NavLink>
+                <NavLink to="/support" className={navClass}>
+                  Support
+                </NavLink>
                 {isAdmin ? (
                   <>
                     <NavLink to="/admin/products" className={navClass}>

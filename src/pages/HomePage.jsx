@@ -63,15 +63,23 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200/90">{SITE_NAME}</p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">{greeting}</h1>
           <p className="mt-4 text-base leading-relaxed text-emerald-50/95 sm:text-lg">
-            Thanks for shopping with us. Use the menu to explore products, place an order, or review your
-            history.
+            Thanks for shopping with us. Use the menu to explore products, place an order, review your
+            history, or chat with support.
           </p>
-          <Link
-            to="/products"
-            className="mt-8 inline-flex items-center justify-center rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-emerald-800 shadow-md transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-700"
-          >
-            Browse products
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/products"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-emerald-800 shadow-md transition hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-700"
+            >
+              Browse products
+            </Link>
+            <Link
+              to="/support"
+              className="inline-flex items-center justify-center rounded-lg border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-700"
+            >
+              Get support
+            </Link>
+          </div>
         </div>
       </section>
 
